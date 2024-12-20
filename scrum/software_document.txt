@@ -1,0 +1,10 @@
+Backend logic:
+
+- uses GetMapping API to display hardcoded list of maps provided by a method in a JSON
+format
+
+Library usage: Leaflet VS Google maps API
+
+- Leaflet is a react library which is free to use
+- map is not modular and not very accurate
+- Google maps API charges after $200 worth of credits
