@@ -43,7 +43,7 @@ Dec 25st, 2024
 
 Dec 26st, 2024
 	Yesterday :
-	Today     :
+	Today     : Changed backend to store data about foodbanks, created a foodbank class in the model and made a method to return it to the frontend
 	Obstacles :
 
 Dec 27st, 2024
