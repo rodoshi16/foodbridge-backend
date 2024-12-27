@@ -13,7 +13,7 @@ Dec 19th, 2024
 
 Dec 20th, 2024
 	Yesterday :
-	Today     :
+	Today     : Displayed the map using google maps, it centers based on the current location 
 	Obstacles :
 
 Dec 21st, 2024
