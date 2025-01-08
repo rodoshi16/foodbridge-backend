@@ -1,9 +1,11 @@
 package com.rodoshi.googlemapsAPI.controller;
 import com.rodoshi.googlemapsAPI.Model.FoodBankData;
 import com.rodoshi.googlemapsAPI.Model.MapData;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,12 @@ import java.util.Map;
 @RestController
 public class MapController {
 
+    private static final String API_KEY = "AIzaSyBUfLl8pAPb847igRrMfqYOTdWWFgD-RiA";
+
     public MapController(){
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/foodbanks")
     /* This annotation maps HTTP GET requests in this handler method in the Spring controller class
     (api/maps) is the URL endpoint that the backend listens to when a request is sent to this URL.
@@ -24,12 +29,32 @@ public class MapController {
     When a request is sent to this URL, getMapInfo() is called
      */
 
-    public List<FoodBankData> getFoodBankInfo(){
+    public List<FoodBankData> getFoodBankInfo(@RequestParam double lat, @RequestParam double lng, @RequestParam int radius){
         List<FoodBankData> foodBankDataList = new ArrayList<FoodBankData>();
-        FoodBankData f1 = new FoodBankData(43.83850460792738, -79.1133888445666, "St.Paul's Community FoodBank", "1537 Pickering Pkwy, Pickering, ON L1V 6W8", "Open", "Mon - Fri  9am to 5pm, closed on weekends");
-        FoodBankData f2 = new FoodBankData(43.77563112092362, -79.17948330860042, "Feed scarborough", "4630 Kingston Rd Unit 16, Scarborough, ON M1E 3V8", "Open", "Mon to Fri 10am to 7pm, 12pm to 5pm on Sat, Sun");
-        foodBankDataList.add(f1);
-        foodBankDataList.add(f2);
+
+        String url = String.format(
+                "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%d&type=shelter&keyword=food+bank&key=%s",
+                lat, lng, radius, API_KEY
+        );
+
+        RestTemplate restTemplate = new RestTemplate();
+        Map<String, Object> response = restTemplate.getForObject(url, Map.class);
+
+        if (response != null && response.containsKey("results")) {
+            List<Map<String, Object>> results = (List<Map<String, Object>>) response.get("results");
+
+            for (Map<String, Object> result : results) {
+                String name = (String) result.get("name");
+                String address = (String) result.get("vicinity");
+                Map<String, Object> geometry = (Map<String, Object>) result.get("geometry");
+                Map<String, Object> location = (Map<String, Object>) geometry.get("location");
+                double latitude = (double) location.get("lat");
+                double longitude = (double) location.get("lng");
+
+                FoodBankData foodBank = new FoodBankData(latitude, longitude, name, address, "Unknown", "Unknown");
+                foodBankDataList.add(foodBank);
+            }
+        }
         return foodBankDataList;
 
 

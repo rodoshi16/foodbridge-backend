@@ -5,16 +5,16 @@ public class FoodBankData {
     Double longitude;
     String name;
     String address;
-    String open;
+    String status;
     String hours;
 
 
-    public FoodBankData(double latitude, double longitude, String name, String address, String open, String hours){
+    public FoodBankData(double latitude, double longitude, String name, String address, String status, String hours){
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
         this.address = address;
-        this.open = open;
+        this.status = status;
         this.hours = hours;
     }
 
@@ -28,7 +28,7 @@ public class FoodBankData {
     }
 
     public String getOpen(){
-        return this.open;
+        return this.status;
     }
 
     public String getHours(){
@@ -52,7 +52,7 @@ public class FoodBankData {
     }
 
     public void setOpen(String open){
-        this.open = open;
+        this.status = open;
     }
 
     public void setHours(String hours){
@@ -66,16 +66,5 @@ public class FoodBankData {
     public void setLongitude(double longitude){
         this.longitude = longitude;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
