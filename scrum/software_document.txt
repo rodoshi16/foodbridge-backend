@@ -5,6 +5,55 @@ format
 
 Library usage: Leaflet VS Google maps API
 
-- Leaflet is a react library which is free to use
+- Leaflet is a React library which is free to use
 - map is not modular and not very accurate
 - Google maps API charges after $200 worth of credits
+
+
+Breakdown of technologies used:
+
+** @RestController -> defines the API endpoints using SpringBoot
+It listens for requests from the frontend and processes them to fetch food bank locations
+
+** @CrossOrigin -> allows Cross origin resource sharing.
+Since backend and frontend are on different ports, I enabled CORS so that the frontend can make
+API requests without security restrictions.
+
+** @GetMapping -> sends a GET request to the Google maps api to retrieve information about FoodBanks
+** @RequestParam -> extracts lat, lng and radius from the API request
+
+When the frontend requests FoodBanks, it sends latitude, longitude and radius to this API endpoint. This method then
+processes the request and returns the nearby FoodBanks.
+
+RestTemplate -> built in Spring boot class that sends HTTP requests and receives responses
+It is used to call Google Maps API to fetch food bank locations based on lat, lng and Radius
+
+in the getFoodBank method, I am making a list of Map objects which have string and data inside it,
+get the name, vicinity, lat and lng and turn into FoodBank objects and store them
+
+
+MVC Architecture -> Model View Controller
+
+- an architecture used when creating an application to make it cleaner
+
+** Controller -> handles user requests and pass them to view
+** View -> renders the model and generate HTML output that client interacts with
+*** Model -> encapsulates the application data
+
+
+In my project,
+
+-> MapController : handling GET requests and getting info from Google Maps API and user's location and sending
+to the view
+-> View -> React frontend
+-> Model -> MapData, FoodBankData -> uses the information retrieved as objects, hides direct access to foodbank details
+
+
+Tomcat -> webserver used to run Java based applications. Tomcat is handling and processing HTTP requests from the frontend
+When I run my spring application, Tomcat is automatically initialized.
+
+
+
+
+
+
