@@ -5,6 +5,7 @@ format
 
 Library usage: Leaflet VS Google maps API
 
+
 - Leaflet is a React library which is free to use
 - map is not modular and not very accurate
 - Google maps API charges after $200 worth of credits
@@ -52,7 +53,17 @@ to the view
 Tomcat -> webserver used to run Java based applications. Tomcat is handling and processing HTTP requests from the frontend
 When I run my spring application, Tomcat is automatically initialized.
 
+Frontend breakdown:
 
+** useLoadScript -> using this hook to load the Google Maps API on my project
+** useState -> using 3 of these hooks to store the center, location and foodbanks and dynamically update it
+** useEffect
+
+- using one useEffect hook to get the user's geolocation and store the lat, lng as coordinates, u
+updating the new location.
+- another useEffect hook is used to fetchFoodbanks, it sends the request to the backend
+and gets the foodbanks within 5km radius.
+- it centers the map on a certain width and height and uses markers to mark the foodbanks on the map
 
 
 
