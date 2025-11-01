@@ -66,5 +66,8 @@ and gets the foodbanks within 5km radius.
 - it centers the map on a certain width and height and uses markers to mark the foodbanks on the map
 
 
+Purpose: connect places where food is a need to where food is wasted
+Map shows you where all the
+
 
 

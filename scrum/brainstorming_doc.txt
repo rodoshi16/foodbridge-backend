@@ -1,0 +1,18 @@
+- Bigger picture
+    - an application that bridges the gap between places where food is a surplus vs a need
+    - you get information about food banks, hours, directions, reviews on the map
+    - users can view information about them and see what those food banks accept
+    - login page, membership: in need of food or looking to donate
+    - other pages and give info about world hunger and food waste
+    - Restaurant: show restaurants that have charity meals (not leftover food but meals that they willingly donate but follow the safety guidelines)
+    - make MealMap first, then make FoodBridge
+    - Unable to visit a food bank? Indicate an address for pickup and volunteers with bring the surplus food from your home to a place in need
+
+- Final product
+
+    A global food re-distribution network
+
+    - 1/3 of food produced globally is wasted, while millions go hungry.
+    - A platform connecting surplus food suppliers (restaurants, grocery stores) to food banks and shelters.
+    - It can be used by donors, volunteers and people in need of food as well
+    - Real-time tracking of donations and recipients would be so cool
