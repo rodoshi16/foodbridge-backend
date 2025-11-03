@@ -1,0 +1,17 @@
+***What is spring boot?***
+
+It is a Java framework (a collection of pre written code) that makes building web applications easier.
+
+***The problem spring boot solves***
+
+Without spring boot, we would have to manually configure a web server, write lots of configuration code, set up database connections
+manually and write boilerplate code for common tasks
+
+Spring boot obviously does all of this for us
+
+***Decorators we must understand***
+
+***1.@SpringBootApplication**
+- Spring boot needs this decorator to identify the main application class
+- Spring boot will then start a web server when the code with this decorator is run
+- It will scan all the code and set everything up automatically
