@@ -17,8 +17,10 @@ import java.util.Map;
 public class MapController {
 
     private static final String API_KEY = "AIzaSyBUfLl8pAPb847igRrMfqYOTdWWFgD-RiA";
+    private final RestTemplate restTemplate;
 
-    public MapController(){
+    public MapController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -37,7 +39,6 @@ public class MapController {
                 lat, lng, radius, API_KEY
         );
 
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> response = restTemplate.getForObject(url, Map.class);
 
         if (response != null && response.containsKey("results")) {
