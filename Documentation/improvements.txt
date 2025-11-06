@@ -1,0 +1,7 @@
+Addition of Rest Template configuration:
+
+Spring Boot creates a single RestTemplate instance (singleton bean) with connection pooling
+The controller receives the same RestTemplate instance via constructor injection
+Connections are reused instead of creating new ones each time
+Connection pooling: 100 max total connections, 20 per route
+Timeouts configured: 5 seconds for connect and read
