@@ -16,7 +16,7 @@ import java.util.Map;
 @RestController
 public class MapController {
 
-//    private static final String API_KEY = "AIzaSyBUfLl8pAPb847igRrMfqYOTdWWFgD-RiA";
+//    private static final String API_KEY = " ";
     private final RestTemplate restTemplate;
 
     public MapController(RestTemplate restTemplate) {
