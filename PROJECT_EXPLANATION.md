@@ -426,6 +426,36 @@ Build a backend API that finds nearby food banks using Google Places API.
 
 ---
 
+## How does it reduce query response time by 20%?
+
+Query response time -> How long this full round trip takes.
+
+Browser (React)
+↓
+Backend (Spring Boot)
+↓
+External API / Database
+↓
+Backend
+↓
+Browser
+
+Without connection pooling, for every request,
+1. Create a new TCP connection
+2. Do a handshake (multiple network round trips)
+3. Possibly negotiate TLS
+4. Send HTTP request
+5. Receive response
+6. Close connection
+
+Instead, I create a pool of HTTP connections, and backend can have upto 100 open connections total. 
+With pooling, connections are already open, requests reuse them instantly, no handshake, no waiting. 
+
+This can easily be 15-30% request time. By removing the cost, the average query latency drops. 
+
+
+
+
 ## Next Steps: Understanding the Improvements
 
 Now that you understand your current project, you can understand the efficiency improvements:
